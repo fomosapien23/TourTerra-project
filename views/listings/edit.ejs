@@ -1,0 +1,46 @@
+<% layout("layouts/boilerplate") -%>
+<body>
+    <div class="row">
+        <div class="col-8 offset-2">
+            <form action="/listHome/<%=listdata._id%>?_method=PUT" method="post">
+                <h2>Edit List Item</h2>
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="title" name="listing[title]" value="<%=listdata.title%>">
+                </div>
+                <div class="mb-3">
+                    <label for="Description" class="form-label">Description</label>
+                    <textarea class="form-control"  name="listing[description]"><%=listdata.description%></textarea>
+                </div>
+    
+                <div class="mb-3">
+                    <label for="image" class="form-label">Image</label>
+                    <input type="text" class="form-control" name="listing[image]" value="<%=listdata.image%>">
+                </div>
+                
+                <div class="row">
+                    <div class="mb-3 col-md-4">
+                        <label for="price" class="form-label">Price</label>
+                        <input type="number"  class="form-control"  name="listing[price]" value="<%=listdata.price%>">
+                    </div>
+                    
+                    <div class="mb-3 col-md-8">
+                        <label for="Country" class="form-label">Country</label>
+                        <input type="text" class="form-control"  name="listing[country]" value="<%=listdata.country%>">
+                    </div>
+                </div>
+                
+
+                <div class="mb-3">
+                    <label for="location" class="form-label">Location</label>
+                    <input type="text" class="form-control" name="listing[location]" value="<%=listdata.location%>">
+                </div>
+    
+                <br><br>
+                <button type="submit" class="btn btn-dark mb-3 form-btn">Edit</button>
+            </form>
+        </div>
+       
+    </div>
+    
+</body>
