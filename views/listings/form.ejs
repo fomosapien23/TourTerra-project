@@ -2,18 +2,18 @@
 <body>
     <div class="row">
         <div class="col-8 offset-2">
-            <form action="/listHome" class="needs-validation"  novalidate method="post"  >
+            <form action="/listHome" class="needs-validation"  novalidate method="POST"  >
                 <h2>Create new List Item</h2>
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
-                    <input type="text" class="form-control" id="title" name="listing[title]" placeholder="enter catchy title" required>
+                    <input type="text" class="form-control"  name="listing[title]" placeholder="enter catchy title" required>
                     <div class="valid-feedback">
                         Looks good!
                       </div>
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <textarea id="description"  class="form-control" name="listing[description]" placeholder="enter description" required></textarea>
+                    <textarea  class="form-control" name="listing[description]" placeholder="enter description" required></textarea>
                     <div class="valid-feedback">
                         Looks good!
                       </div>
