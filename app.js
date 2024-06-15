@@ -8,7 +8,8 @@ const methodOverride = require('method-override')
 const ejsMate = require('ejs-mate')
 const wrapAsync=require('./util/wrapAsync.js')
 const ExpressError=require('./util/ExpressError.js')
-const {listingSchema}=require('./schema.js')
+const { listingSchema, reviewSchema }=require('./schema.js')
+const Review=require("./MODELS/review.js")
 
 app.set("views", path.join(__dirname,"views"));
 app.set("view engine","ejs");
@@ -46,6 +47,17 @@ async function main() {
 
 const validateListing=(req,res,next)=>{
     let {error}=listingSchema.validate(req.body);
+
+    if(error){
+        let errMsg=error.details.map((el)=>el.message);
+        throw new ExpressError(400,errMsg);
+    }else{
+        next();
+    }
+}
+
+const validateReview=(req,res,next)=>{
+    let {error}=reviewSchema.validate(req.body);
 
     if(error){
         let errMsg=error.details.map((el)=>el.message);
@@ -116,13 +128,41 @@ app.delete("/listHome/:id",wrapAsync( async (req,res)=>{
     res.redirect("/listHome");
 }))
 
-
+//show route
 app.get("/listHome/:id", wrapAsync(async (req,res)=>{
     let {id}=req.params;
-    let data=await Listing.findById(id);
+    let data=await Listing.findById(id).populate("review");
     // console.log(data);
     res.render("listings/show.ejs",{data});
 }))
+
+
+//review 
+
+//post route
+app.post('/listHome/:id/review', validateReview , wrapAsync(async (req, res) => {
+    let listing= await Listing.findById(req.params.id);
+    const newReview = new Review(req.body.review);
+    console.log(newReview);  // This should print the form data
+    listing.review.push(newReview);
+    await newReview.save();
+    await listing.save();
+    console.log("new review saved")
+    res.redirect(`/listHome/${listing._id}`);  // Ensure to send a response
+  }));
+
+  
+  // delete post route
+
+  app.delete("/listHome/:id/review/:reviewId", wrapAsync( async (req,res)=>{
+        let { id , reviewId }=req.params;
+
+        await Listing.findByIdAndUpdate( id, {$pull : { review: reviewId}});
+        await Review.findByIdAndDelete(reviewId);
+
+        res.redirect(`/listHome/${id}`)
+
+  }));
 
 
 app.all("*",(req,res,next)=>{
@@ -138,6 +178,7 @@ app.use((err,req,res,next)=>{
 app.listen(port,()=>{
     console.log("server listening");
 })
+
 
 app.get("/",(req,res)=>{
     res.send("working")
