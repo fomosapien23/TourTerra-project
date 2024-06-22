@@ -12,16 +12,15 @@
                     
                     <img src="<%=data.image%>" class="show-img" alt="list image">
                     <div class="card-body card-show">
-                        <h5 class="card-title">
-                            <b><%=data.title%></b>
-                        </h5>
-                        <%=data.description%> <br>
-                        &#8377; <%=data.price.toLocaleString("en-IN")%> <br>
-                        <%=data.location%> <br>
-                        <%=data.country%> <br> <br>
+                       <p><h5 class="card-title"><b><%=data.title%></b></h5></p> 
+                        <p>Owned By: <i><%= data.owner.username %></i></p>
+                        <p><%=data.description%> </p>
+                        <p> &#8377; <%=data.price.toLocaleString("en-IN")%></p>
+                        <p><%=data.location%></p>
+                        <p><%=data.country%></p>
                     </div>
                     
-
+                    <% if(currUser && currUser._id.equals(data.owner._id)){ %>
                     <div class="btns">
                         <form action="/listHome/<%=data._id%>/edit" method="get" >
                             <button type="submit" class="btn btn-dark form-btn offset-2" >Edit</button>
@@ -30,9 +29,12 @@
                             <button type="submit" class="btn btn-dark  offset-4">Delete</button>
                         </form>
                     </div>
+                    <% } %>
                    
                 </div>
             </div>
+
+            <% if(currUser){ %>
             <div class="col-8 offset-3">
                 <hr>
                 <h4>Leave a review</h4>
@@ -56,6 +58,8 @@
                 </form>
             </div>
 
+            <% } %>
+
             <div  class="col-8 offset-3">
                 <hr>
                 <h4>All Reviews</h4>
@@ -63,7 +67,7 @@
                     <% for (review of data.review){ %>
                         <div class="card col-5 ms-3 mb-3" >
                             <div class="card-body">
-                              <h5 class="card-title">John Doe</h5>
+                              <h5 class="card-title">@<%= review.author.username %></h5>
                               <p class="card-text"><%= review.comment%></p>
                               <p class="card-text"><%=review.rating%> Stars</p>
                             </div>
