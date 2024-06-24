@@ -21,8 +21,13 @@ module.exports.createListing=async (req,res,next)=>{
     // if(result.error){
     //     throw new ExpressError(400, result.error);
     // }
+
+    let url=req.file.path;
+    let filename =req.file.filename;
+    // console.log(url," --- ", filename);
     let newList=new Listing(req.body.listing);
     newList.owner= req.user._id;
+    newList.image={ url, filename};
     // console.log(newList)
     await newList.save();
     req.flash("success","New Listing is Created!")
@@ -39,7 +44,9 @@ module.exports.renderEditForm=async(req,res)=>{
         req.flash("error","Listing you are requested for doesn't exist")
         res.redirect("/listHome");
     }else{
-        res.render("listings/edit.ejs",{listdata});
+        let originalImgUrl=listdata.image.url;
+        originalImgUrl= originalImgUrl.replace("/upload", "/upload/w_300")
+        res.render("listings/edit.ejs",{ listdata , originalImgUrl});
     }
 }
 
@@ -49,8 +56,16 @@ module.exports.updateListing=async(req,res)=>{
     }
     let {id}=req.params;
 
-    let updateitem=await Listing.findByIdAndUpdate(id,{...req.body.listing},{runValidators:true,new:true});
-    console.log(updateitem);
+    let updateList=await Listing.findByIdAndUpdate(id,{...req.body.listing},{runValidators:true,new:true});
+
+    if(typeof req.file !="undefined"){
+        let url=req.file.path;
+        let filename =req.file.filename;
+        updateList.image={ url, filename};
+        updateList.save();
+    }
+    
+    console.log(updateList);
     req.flash("success","Listing is Updated!")
     res.redirect(`/listHome/${id}`);
 }

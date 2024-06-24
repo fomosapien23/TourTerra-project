@@ -2,7 +2,7 @@
 <body>
     <div class="row">
         <div class="col-8 offset-2">
-            <form action="/listHome" class="needs-validation"  novalidate method="POST"  >
+            <form action="/listHome" class="needs-validation"  novalidate method="POST" enctype="multipart/form-data" >
                 <h2>Create new List Item</h2>
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
@@ -20,7 +20,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="image" class="form-label">Image</label>
-                    <input type="text" class="form-control" name="listing[image]" placeholder="enter image link">
+                    <input type="file" class="form-control" name="listing[image]"  required>
                     
                 </div>
                 

@@ -2,7 +2,7 @@
 <body>
     <div class="row">
         <div class="col-8 offset-2">
-            <form action="/listHome/<%=listdata._id%>?_method=PUT" method="post">
+            <form action="/listHome/<%=listdata._id%>?_method=PUT" method="post" enctype="multipart/form-data">
                 <h2>Edit List Item</h2>
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
@@ -12,10 +12,15 @@
                     <label for="Description" class="form-label">Description</label>
                     <textarea class="form-control"  name="listing[description]"><%=listdata.description%></textarea>
                 </div>
-    
+
                 <div class="mb-3">
-                    <label for="image" class="form-label">Image</label>
-                    <input type="text" class="form-control" name="listing[image]" value="<%=listdata.image%>">
+                    <label for="imageUrl" class="form-label">Original Listing Image</label><br>
+                    <img name="imageUrl" src="<%= originalImgUrl %>" alt="img">
+                </div>
+
+                <div class="mb-3">
+                    <label for="image" class="form-label">Upload new Image</label>
+                    <input type="file" class="form-control" name="listing[image]" >
                 </div>
                 
                 <div class="row">
