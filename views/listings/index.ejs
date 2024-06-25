@@ -1,11 +1,114 @@
 <% layout("layouts/boilerplate") -%>
 
-<div class="container">
-    <h3>All list Item</h3>
-    <!-- <form action="/listHome/new" method="get">
-        <button type="submit">Add new List Item</button>
-    </form> -->
-    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+<style>
+    #filters{
+        display:flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    .filter{
+        text-align: center;
+        margin-top: 1rem;
+        margin-right: 2rem;
+        opacity: 0.6;
+        
+    }
+    .filter:hover{
+        opacity: 1;
+        cursor: pointer;
+    }
+
+    .filter p{
+        font-size: 12px;
+        font-weight: 600;
+    }
+    .filter a {
+        color: inherit;
+        text-decoration: none;
+    }
+    .tax-toggle{
+        padding: 1rem ;
+        border: 1px solid black;
+        border-radius: 1rem;
+        height: 2.5rem;
+        align-items: center;
+        display: flex;
+        margin-left: 2rem;
+    }
+
+    .icon-img{
+        height: 30px;
+    }
+</style>
+<div class="container ">
+
+    <div id="filters" >
+        <div class="filter">
+            <a href="/listHome/category/Treehouse">
+                <div><img src="/asset/treehouse.jpg" alt="img" class="icon-img" ></div>
+                <p>Treehouse</p>
+            </a>
+        </div>
+        <div class="filter ">
+            <a href="/listHome/category/Beachfront">
+                <div><img src="/asset/beaches.jpg" alt="img" class="icon-img" ></div>
+                <p>Beachfront</p>
+            </a>
+        </div>
+        <div class="filter">
+            <a href="/listHome/category/Iconic cities">
+                <div><img src="/asset/topCities.jpg" alt="img" class="icon-img" ></div>
+                <p>Iconic cities</p>
+            </a>
+        </div>
+        <div class="filter">
+            <a href="/listHome/category/Historical place">
+                <div><img src="/asset/historicalplace.jpg" alt="img" class="icon-img" ></div>
+                <p>Historical place</p>
+            </a>
+        </div>
+        <div class="filter ">
+            <a href="/listHome/category/Farm">
+                <div><img src="/asset/farms.jpg" alt="img" class="icon-img" ></div>
+                <p>Farm</p>
+            </a>
+        </div>
+        <div class="filter">
+            <a href="/listHome/category/Countryside">
+                <div><img src="/asset/countryside.jpg" alt="img" class="icon-img" ></div>
+                <p>Countryside</p>
+            </a>
+        </div>
+        <div class="filter">
+            <a href="/listHome/category/Lake view">
+                <div><img src="/asset/lakeview.jpg" alt="img" class="icon-img" ></div>
+                <p>Lake view</p>
+            </a>
+        </div>
+        <div class="filter ">
+            <a href="/listHome/category/Swimming pools">
+                <div><img src="/asset/pools.jpg" alt="img" class="icon-img" ></div>
+                <p>Swimming pools</p>
+            </a>
+        </div>
+        <div class="filter">
+            <a href="/listHome/category/Top of the world">
+                <div><img src="/asset/topOfTheWorld.jpg" alt="img" class="icon-img" ></div>
+                <p>Top of the world</p>
+            </a>
+        </div>
+        
+
+        <div class="tax-toggle">
+            <div class="form-check-reverse form-switch check">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Display total before taxes</label>
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+              </div>
+        </div>
+        
+        
+    </div>
+    <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 mt-2">
         <%for (list of dataList){%>
             <!-- <li><a href="/listHome/<%=list._id%>"><%=list.title%></a></li> -->
             <a href="/listHome/<%=list._id%>" class="card-link">
@@ -17,7 +120,9 @@
                     <div class="card-body">
                         <p class="card-text">
                             <b><%=list.title%> </b><br>
-                            &#8377; <%=list.price.toLocaleString("en-IN")%> / night
+                            <p> &#8377; <%=list.price.toLocaleString("en-IN")%> / night &nbsp; 
+                                 <i class="taxes" style="font-size: 12px; font-weight: 800; display: none;">+18% GST</i></p>
+                           
                         </p>
                     </div>
                 </div>
@@ -27,6 +132,22 @@
     </div>
 </div>
 
+<script>
+    let switchButton = document.getElementById("flexSwitchCheckDefault");
+
+    switchButton.addEventListener("click", ()=>{
+        let taxinfo =document.getElementsByClassName("taxes");
+
+        for (info of taxinfo){
+            if(info.style.display=='inline'){
+                info.style.display='none';
+            }else{
+                info.style.display='inline';
+            }
+            
+        }
+    })
+</script>
 
 
         

@@ -1,5 +1,8 @@
 <% layout("layouts/boilerplate") -%>
-
+    <script>
+        let maptoken= "<%= process.env.MAP_TOKEN %>";
+        let data= <%- JSON.stringify(data) %>;
+    </script>
     <body>
         <div class="row " style="margin-top: 5px;">
             <div class="col-8 offset-3">
@@ -72,6 +75,8 @@
             </div>
 
             <% } %>
+            
+            <% if(data.review.length>0){ %>
 
             <div  class="col-8 offset-3">
                 <hr>
@@ -92,6 +97,21 @@
                 </div>
                 
             </div>
+
+            <% } %>
+            
+            <div class="col-8 offset-3">
+                <hr>
+                <h3>Where you'll be</h3>
+                <div id="map"></div>
+                <br>
+            </div>
+            
+
+            <script src="/js/map.js"></script>
+
+
+            
 
         </div>
 

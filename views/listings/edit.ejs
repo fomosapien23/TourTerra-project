@@ -2,7 +2,7 @@
 <body>
     <div class="row">
         <div class="col-8 offset-2">
-            <form action="/listHome/<%=listdata._id%>?_method=PUT" method="post" enctype="multipart/form-data">
+            <form action="/listHome/<%=listdata._id%>?_method=PUT" novalidate method="post" enctype="multipart/form-data">
                 <h2>Edit List Item</h2>
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
@@ -12,10 +12,25 @@
                     <label for="Description" class="form-label">Description</label>
                     <textarea class="form-control"  name="listing[description]"><%=listdata.description%></textarea>
                 </div>
-
+                <div class="mb-3">
+                    <label for="categories" class="form-label">Select Category</label>
+                    <select class="form-select" id="categories" name="listing[categories]" required>
+                        <option value="">Select a category...</option>
+                        <option value="Beachfront" <%= listdata.categories === 'Beachfront' ? 'selected' : '' %>>Beachfront</option>
+                        <option value="Treehouse" <%= listdata.categories === 'Treehouse' ? 'selected' : '' %>>Treehouse</option>
+                        <option value="Iconic cities" <%= listdata.categories === 'Iconic cities' ? 'selected' : '' %>>Iconic cities</option>
+                        <option value="Historical place" <%= listdata.categories === 'Historical place' ? 'selected' : '' %>>Historical place</option>
+                        <option value="Farm" <%= listdata.categories === 'Farm' ? 'selected' : '' %>>Farm</option>
+                        <option value="Countryside" <%= listdata.categories === 'Countryside' ? 'selected' : '' %>>Countryside</option>
+                        <option value="Lake view" <%= listdata.categories === 'Lake view' ? 'selected' : '' %>>Lake view</option>
+                        <option value="Swimming pools" <%= listdata.categories === 'Swimming pools' ? 'selected' : '' %>>Swimming pools</option>
+                        <option value="Top of the world" <%= listdata.categories === 'Top of the world' ? 'selected' : '' %>>Top of the world</option>
+                    </select>
+                </div>
+                
                 <div class="mb-3">
                     <label for="imageUrl" class="form-label">Original Listing Image</label><br>
-                    <img name="imageUrl" src="<%= originalImgUrl %>" alt="img">
+                    <img name="imageUrl" id="org-img" src="<%= originalImgUrl %>" alt="img">
                 </div>
 
                 <div class="mb-3">

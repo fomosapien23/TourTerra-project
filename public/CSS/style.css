@@ -1,76 +1,96 @@
-body{
-  font-family: "Plus Jakarta Sans", sans-serif !important;
-  
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+body {
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-.container{
+.container {
     flex: 1;
 }
 
-.navbar{
+.navbar {
     height: 5rem;
     background-color: white;
 }
 
-.fa-compass{
+.fa-compass {
     color: #ff385c;
     font-size: 2rem;
 }
 
-.nav-link{
+.nav-link {
     color: #222222 !important;
+}
+
+.nav-brand {
+    color: #ff385c !important;
+    font-size: 30px !important;
+    font-weight: 600;
+}
+
+#navbarNavAltMarkup{
+    background-color: #ffffff;
 }
 
 /* footer style */
 
-.footer-content{
+.footer-content {
     background-color: #f2f2f2;
     display: flex;
     flex-wrap: wrap;
+    padding: 1rem 0;
 }
 
 .footer-socials,
 .footer-links,
-.footer-brand{
+.footer-brand {
     width: 100%;
     text-align: center;
     justify-content: center;
     align-items: space-evenly;
 }
 
-.footer-socials i{
+.footer-links a{
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    align-items: space-evenly;
+    margin-right: 1rem;
+}
+
+.footer-socials i {
     font-size: 1.2rem;
     margin-right: 1rem;
 }
 
-.footer-links a{
+.footer-links a {
     text-decoration: none;
     color: #222222;
 }
 
-.footer-links a:hover{
+.footer-links a:hover {
     text-decoration: underline;
 }
 
 /* card styling*/
-.card-link{
+.card-link {
     text-decoration: none;
 }
-.listing-card{
+
+.listing-card {
     border: none !important;
     margin-bottom: 2rem;
 }
 
-.card-img-top{
+.card-img-top {
     border-radius: 1rem !important;
     width: 100% !important;
     object-fit: cover !important;
 }
 
-.card-body{
+.card-body {
     padding: 0 !important;
 }
 
@@ -80,41 +100,65 @@ body{
 
 /* hover-effect */
 
-.card-img-overlay{
+.card-img-overlay {
     opacity: 0;
 }
 
-.card-img-overlay:hover{
-    opacity:1;
+.card-img-overlay:hover {
+    opacity: 1;
     color: white;
 }
 
 /* form  */
 
-.form-btn{
+.form-btn {
     border: none !important;
-    background-color:#ff385c !important;
+    background-color: #ff385c !important;
 }
 
 /* show list  */
 
-.show-img{
+.show-img {
     object-fit: cover !important;
     border-radius: 1rem !important;
     height: 55vh !important;
 }
 
-.btns{
+.btns {
     display: flex;
     justify-content: start;
 
 }
 
-.card-title{
+.card-title {
     margin-top: 5px;
 }
 
-.card-show{
+.card-show {
     padding-left: 0 !important;
     padding-right: 0 !important;
+}
+
+/* map  */
+
+#map {
+    height: 400px;
+    width: 50vw;
+}
+
+/* flash message  */
+
+.alert{
+    margin-top: .5rem;
+}
+
+
+/* search  */
+
+
+/* edit form  */
+
+#org-img{
+    width: 40vh;
+    
 }

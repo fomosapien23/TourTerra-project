@@ -1,15 +1,16 @@
 {
-  "name": "major-project",
+  "name": "TourTerra-project",
   "version": "1.0.0",
-  "description": "",
+  "description": "A major project using MERN",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "@Rohan_rai",
   "license": "ISC",
   "dependencies": {
+    "@mapbox/mapbox-sdk": "^0.16.0",
     "cloudinary": "^1.41.3",
     "connect-flash": "^0.1.1",
     "dotenv": "^16.4.5",

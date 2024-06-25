@@ -68,21 +68,11 @@ app.use((req,res,next)=>{
     next();
 })
 
-// app.get("/demo",async(req,res)=>{
-//     let user1=new User({
-//         email:"rohan@gmail.com",
-//         username:"rohan23565"
-//     })
-
-//     let newUser= await User.register(user1, "rohanffhad123");
-//     res.send(newUser);
-// })
-
-
 
 app.use("/listHome",listingRouter);
 app.use("/listHome/:id/review",reviewRouter);
 app.use("/",userRouter);
+
 
 
 
@@ -100,6 +90,6 @@ app.listen(port,()=>{
     console.log("server listening");
 })
 
-app.get("/",(req,res)=>{
-    res.send("working")
-})
+// app.get("/",(req,res)=>{
+//     res.send("working")
+// })
