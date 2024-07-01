@@ -9,6 +9,12 @@ const reviewController =require("../CONTROLLERS/review.js")
 
 //review 
 
+// Log the request method and URL
+router.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`);
+  next();
+});
+
 //review post route
 router.post('/',isLoggedIn, validateReview , wrapAsync(reviewController.createReview));
 

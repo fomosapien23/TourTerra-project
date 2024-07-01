@@ -94,6 +94,9 @@ app.use("/listHome/:id/review",reviewRouter);
 app.use("/",userRouter);
 
 
+app.all("*",(req,res,next)=>{
+    next( new ExpressError(404,"Page Not Found!"));
+})
 
 
 app.use((err,req,res,next)=>{
@@ -101,9 +104,7 @@ app.use((err,req,res,next)=>{
     res.status(statusCode).render('error.ejs',{message});
 })
 
-app.all("*",(req,res,next)=>{
-    next( new ExpressError(404,"Page Not Found!"));
-})
+
 
 
 app.listen(port,()=>{

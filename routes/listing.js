@@ -11,6 +11,11 @@ const multer  = require('multer')
 const {storage}= require("../cloudConfig.js")
 const upload = multer({ storage })
 
+// Log the request method and URL
+router.use((req, res, next) => {
+    console.log(`${req.method} ${req.url}`);
+    next();
+});
 
 //home page render
 router.get("/",wrapAsync (listingController.index))

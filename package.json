@@ -1,6 +1,6 @@
 {
   "engines" :{
-    "node": "v20.11.1"
+    "node": "20.11.1"
   },
   "name": "TourTerra-project",
   "version": "1.0.0",

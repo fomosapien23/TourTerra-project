@@ -7,6 +7,13 @@ const { saveRedirectUrl } = require("../middleware.js");
 const userController = require("../CONTROLLERS/user.js");
 const { render } = require("ejs");
 
+
+// Log the request method and URL
+router.use((req, res, next) => {
+    console.log(`${req.method} ${req.url}`);
+    next();
+});
+
 //signup form render
 router.get("/signup", userController.renderSignupForm)
 
