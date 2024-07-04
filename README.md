@@ -1,6 +1,7 @@
 # TourTerra Project
 
-A major project using the MERN stack, designed as a clone of Airbnb. This project allows users to list their homes and search for destinations.
+A major project using the MERN stack, designed as a clone of Airbnb. This project allows users to list their homes and search for destinations. 
+Live : https://tourterra.onrender.com/listHome
 
 ## Table of Contents
 
