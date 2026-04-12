@@ -3,7 +3,7 @@ const router=express.Router();
 const wrapAsync=require('../util/wrapAsync.js')
 const ExpressError=require('../util/ExpressError.js')
 const Listing=require("../MODELS/listing.js")
-const {isLoggedIn , isOwner, validateListing}=require("../middleware.js")
+const {isLoggedIn , isOwner, validateListing}=require("../middlewares.js")
 
 const listingController= require("../CONTROLLERS/listing.js")
 

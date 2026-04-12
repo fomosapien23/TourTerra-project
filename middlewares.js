@@ -1,5 +1,5 @@
 
-const Listing =require("./MODELS/listing")
+const Listing =require("./MODELS/listing.js")
 const Review=require("./MODELS/review.js")
 const { listingSchema , reviewSchema }=require('./schema.js')
 const ExpressError=require('./util/ExpressError.js')

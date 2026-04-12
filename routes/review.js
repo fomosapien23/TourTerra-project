@@ -4,7 +4,7 @@ const wrapAsync=require('../util/wrapAsync.js')
 const ExpressError=require('../util/ExpressError.js')
 const Listing=require("../MODELS/listing.js")
 const Review=require("../MODELS/review.js")
-const { validateReview, isLoggedIn , isReviewAuthor } = require("../middleware.js")
+const { validateReview, isLoggedIn , isReviewAuthor } = require("../middlewares.js")
 const reviewController =require("../CONTROLLERS/review.js")
 
 //review 
